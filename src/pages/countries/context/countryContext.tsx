@@ -17,12 +17,7 @@ const CountryProvider = ({ children }: IChildProps) => {
   const handleChange = (e: EventType) => {
     const key = e.target.name;
     const value = e.target.value;
-    const search = {
-      input: () => setSearchValue((s) => ({ ...s, input: value })),
-      continents: () => setSearchValue((s) => ({ ...s, continents: value })),
-      currencies: () => setSearchValue((s) => ({ ...s, currencies: value })),
-    };
-    search[key as SearchObjectKey]();
+    setSearchValue((prevState) => ({ ...prevState, [key]: value }));
   };
 
   return (
